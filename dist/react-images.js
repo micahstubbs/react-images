@@ -456,6 +456,7 @@ function Footer(_ref, _ref2) {
 	    showCount = _ref.showCount,
 	    props = objectWithoutProperties(_ref, ['caption', 'countCurrent', 'countSeparator', 'countTotal', 'showCount']);
 
+	console.log('caption from react-images Footer.js', caption);
 	if (!caption && !showCount) return null;
 
 	var classes = noImportant.StyleSheet.create(deepMerge(defaultStyles$3, theme$$1));
@@ -1342,10 +1343,9 @@ var Lightbox = function (_Component) {
 
 			if (!images || !images.length) return null;
 
-			console.log('images[currentImage]', images[currentImage]);
-			// images[currentImage].caption
+			console.log('images[currentImage] from react-images Lightbox.js', images[currentImage]);
 			return React__default.createElement(Footer, {
-				caption: '',
+				caption: images[currentImage].caption,
 				countCurrent: currentImage + 1,
 				countSeparator: imageCountSeparator,
 				countTotal: images.length,

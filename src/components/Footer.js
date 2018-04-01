@@ -15,6 +15,7 @@ function Footer ({
 }, {
 	theme,
 }) {
+	console.log('caption from react-images Footer.js', caption)
 	if (!caption && !showCount) return null;
 
 	const classes = StyleSheet.create(deepMerge(defaultStyles, theme));
