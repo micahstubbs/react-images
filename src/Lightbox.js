@@ -327,6 +327,8 @@ class Lightbox extends Component {
 
 		if (!images || !images.length) return null;
 
+		// console.log('images[currentImage]', images[currentImage])
+		// images[currentImage].caption
 		return (
 			<Footer
 				caption={images[currentImage].caption}

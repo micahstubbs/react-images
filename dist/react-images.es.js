@@ -3,6 +3,7 @@ import React, { Children, Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import ScrollLock from 'react-scrolllock';
 import { StyleSheet as StyleSheet$1, css as css$1 } from 'aphrodite/no-important';
+import Parser from 'html-react-parser';
 import { CSSTransitionGroup } from 'react-transition-group';
 import { render, unmountComponentAtNode } from 'react-dom';
 
@@ -471,7 +472,7 @@ function Footer(_ref, _ref2) {
 		caption ? React.createElement(
 			'figcaption',
 			{ className: css$1(classes.footerCaption) },
-			caption
+			Parser(caption)
 		) : React.createElement('span', null),
 		imageCount
 	);
@@ -1339,8 +1340,10 @@ var Lightbox = function (_Component) {
 
 			if (!images || !images.length) return null;
 
+			console.log('images[currentImage]', images[currentImage]);
+			// images[currentImage].caption
 			return React.createElement(Footer, {
-				caption: images[currentImage].caption,
+				caption: '',
 				countCurrent: currentImage + 1,
 				countSeparator: imageCountSeparator,
 				countTotal: images.length,

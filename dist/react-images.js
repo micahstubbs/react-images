@@ -1,12 +1,13 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('prop-types'), require('react'), require('aphrodite'), require('react-scrolllock'), require('aphrodite/no-important'), require('react-transition-group'), require('react-dom')) :
-	typeof define === 'function' && define.amd ? define(['prop-types', 'react', 'aphrodite', 'react-scrolllock', 'aphrodite/no-important', 'react-transition-group', 'react-dom'], factory) :
-	(global.Lightbox = factory(global.PropTypes,global.React,global.aphrodite,global.ScrollLock,global.aphrodite,global.ReactTransitionGroup,global.ReactDOM));
-}(this, (function (PropTypes,React,aphrodite,ScrollLock,noImportant,reactTransitionGroup,reactDom) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('prop-types'), require('react'), require('aphrodite'), require('react-scrolllock'), require('aphrodite/no-important'), require('html-react-parser'), require('react-transition-group'), require('react-dom')) :
+	typeof define === 'function' && define.amd ? define(['prop-types', 'react', 'aphrodite', 'react-scrolllock', 'aphrodite/no-important', 'html-react-parser', 'react-transition-group', 'react-dom'], factory) :
+	(global.Lightbox = factory(global.PropTypes,global.React,global.aphrodite,global.ScrollLock,global.aphrodite,global.Parser,global.ReactTransitionGroup,global.ReactDOM));
+}(this, (function (PropTypes,React,aphrodite,ScrollLock,noImportant,Parser,reactTransitionGroup,reactDom) { 'use strict';
 
 PropTypes = PropTypes && PropTypes.hasOwnProperty('default') ? PropTypes['default'] : PropTypes;
 var React__default = 'default' in React ? React['default'] : React;
 ScrollLock = ScrollLock && ScrollLock.hasOwnProperty('default') ? ScrollLock['default'] : ScrollLock;
+Parser = Parser && Parser.hasOwnProperty('default') ? Parser['default'] : Parser;
 
 // ==============================
 // THEME
@@ -473,7 +474,7 @@ function Footer(_ref, _ref2) {
 		caption ? React__default.createElement(
 			'figcaption',
 			{ className: noImportant.css(classes.footerCaption) },
-			caption
+			Parser(caption)
 		) : React__default.createElement('span', null),
 		imageCount
 	);
@@ -1341,8 +1342,10 @@ var Lightbox = function (_Component) {
 
 			if (!images || !images.length) return null;
 
+			console.log('images[currentImage]', images[currentImage]);
+			// images[currentImage].caption
 			return React__default.createElement(Footer, {
-				caption: images[currentImage].caption,
+				caption: '',
 				countCurrent: currentImage + 1,
 				countSeparator: imageCountSeparator,
 				countTotal: images.length,
